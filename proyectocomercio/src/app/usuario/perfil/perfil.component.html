@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img
+      src="https://cdn.pixabay.com/photo/2017/02/16/10/29/icon-2071010_960_720.png"
+      width="10%"
+      alt=""
+    />
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="#">Inicio</a>
+            </li>
+  
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Quiénes Somos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Misión</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Visión</a>
+          </div>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nuestros Servicios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contactos</a>
+        </li>
+    
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        
+        <button class="btn btn-outline-danger my-2 my-sm-0" [routerLink]="['/inicio']">
+          Cerrar Sesion
+        </button>
+      </form>
+    </div>
+  </nav>
+<p>perfil works!</p>
+<button [routerLink]="['/usuario/factura']">Factura</button>
