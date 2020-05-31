@@ -59,4 +59,29 @@
       </form>
     </div>
   </nav>
-<p>registrarse works!</p>
+
+  <div class="conta">
+<form class="example-form">
+<label>Usuario</label>
+<input  [(ngModel)]="usuario" name="usuario">
+<label>Contraseña</label>
+<input  [(ngModel)]="contrasenia" name="contrasenia">
+<label>Cedula</label>
+<input  [(ngModel)]="cedula" name="cedula">
+<label>Nombre</label>
+<input  [(ngModel)]="nombre" name="nombre">
+<label>Apellido</label>
+<input  [(ngModel)]="apellido" name="apellido">
+<label>Correo</label>
+<input  [(ngModel)]="correo" name="correo">
+<label>Direccion</label>
+<input  [(ngModel)]="direccion" name="direccion">
+<label>Telefono</label>
+<input  [(ngModel)]="telefono" name="telefono">
+
+
+</form>
+
+<button (click)="registrase()">Registrase</button>
+
+  </div>

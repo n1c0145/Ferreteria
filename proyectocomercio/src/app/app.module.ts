@@ -9,7 +9,9 @@ import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
-
+import {HttpClientModule} from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { RegistroService } from "./services/registro.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,9 +25,13 @@ import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    UsuarioModule
+    UsuarioModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    RegistroService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
