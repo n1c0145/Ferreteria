@@ -16,6 +16,7 @@ apellido = ''
 correo = ''
 direccion = ''
 telefono = ''
+id='1'
 constructor(
   private readonly _router: Router,
   private readonly _registroService: RegistroService
@@ -38,6 +39,7 @@ this._registroService.metodoPost(
   }
 ).subscribe((resultadoPost)=>{
   alert('usuario registrado')
+
 })
   }
 }

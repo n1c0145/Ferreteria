@@ -20,4 +20,5 @@ export class RegistroService {
   metodoDelete(url: string) {
     return this._httpClient.delete(url);
   }
+
 }
