@@ -16,7 +16,7 @@ apellido = ''
 correo = ''
 direccion = ''
 telefono = ''
-id='1'
+id=''
 constructor(
   private readonly _router: Router,
   private readonly _registroService: RegistroService

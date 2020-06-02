@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
+import { Clientes } from "../../app/modelos/clientes.interface";
+import { Observable } from "rxjs/internal/Observable";
 
 @Injectable() // servicio
 export class RegistroService {
-  constructor(private readonly _httpClient: HttpClient) {}
+  private url = 'http://localhost:1337/cliente';
 
-  metodoGet(url: string) {
-    return this._httpClient.get(url);
-  }
+  constructor(private  _httpClient: HttpClient) {}
 
-  metodoPost(url: string, datos) {
-    return this._httpClient.post(url, datos);
-  }
 
-  metodoPut(url: string, dataAEditar) {
-    return this._httpClient.put(url, dataAEditar);
-  }
 
-  metodoDelete(url: string) {
-    return this._httpClient.delete(url);
-  }
+ 
+   metodoGet(): Observable<Clientes[]>{
+     return this._httpClient.get<Clientes[]>(this.url)
+   }
+
+   metodoPost(url: string, datos) {
+     return this._httpClient.post(url, datos);
+   }
+
+   metodoPut(cliente: Clientes): Observable<Clientes>{
+return this._httpClient.put<Clientes>(this.url , cliente)
+   }
+ 
+metodoDelete(id: string):Observable<{}>{
+  this.url = `${this.url}/${id}`;
+  return this._httpClient.delete(this.url)
+}
 
 }
