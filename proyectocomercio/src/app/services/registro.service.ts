@@ -21,6 +21,7 @@ export class RegistroService {
    }
 
    metodoPut(cliente: Clientes): Observable<Clientes>{
+    this.url = `${this.url}/${cliente.id}`;
 return this._httpClient.put<Clientes>(this.url , cliente)
    }
  

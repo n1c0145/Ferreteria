@@ -41,14 +41,8 @@ export class PerfilComponent implements OnInit {
 
   actualizar(micliente: Clientes) {
     this._registroService.metodoPut(micliente).subscribe((cliente) => {
-      const indexToupdate = cliente
-        ? this.clientes.findIndex((c) => c.id === cliente.id)
-        : -1;
-      if (indexToupdate > -1) {
-        this.clientes[indexToupdate] = cliente;
-       
-        alert('Usuario Actualizado')
-      }
+      this.toggleEditOn();
+
     });
   }
   onSelectCliente(nombre: Clientes) {

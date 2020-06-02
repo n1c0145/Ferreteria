@@ -75,7 +75,11 @@ selected :{{selectedCliente | json}} -->
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let cliente of clientes">
+    <tr
+      *ngFor="let cliente of clientes"
+      (click)="onSelectectCity(cliente)"
+      (dblclick)="toggleEditOn()"
+    >
       <th>{{ cliente.cedula }}</th>
       <th>{{ cliente.nombre }}</th>
       <th>{{ cliente.apellido }}</th>
@@ -83,23 +87,23 @@ selected :{{selectedCliente | json}} -->
       <th>{{ cliente.direccion }}</th>
       <th>{{ cliente.telefono }}</th>
       <span class="badge badge-danger" (click)="eliminar(cliente)">x</span>
-      <span>
-        <div class="input-group mt-2" *ngIf="editOn">
-          <input
-            type="text"
-            class="form-control"
-            name="editOn"
-            value="{{ selectedCliente.nombre }}"
-            [(ngModel)]="selectedCliente.nombre"
-            onFocus = "this.select()"
-            autofocus
-          />
-          <button class="btn btn-info" (click)="actualizar(selectedCliente)">
-            editar
-          </button>
-          </div
-      ></span>
+
+  
     </tr>
+    <div class="input-group mt-2" *ngIf="editOn">
+      <input
+        type="text"
+        class="form-control"
+        name="editOn"
+        value="{{ selectedCliente.nombre }}"
+        [(ngModel)]="selectedCliente.nombre"
+        onFocus="this.select()"
+        autofocus
+      />
+      <button class="btn btn-info" (click)="actualizar(selectedCliente)">
+        editar
+      </button>
+    </div>
   </tbody>
 </table>
 
