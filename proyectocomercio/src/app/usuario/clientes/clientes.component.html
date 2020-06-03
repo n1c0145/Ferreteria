@@ -1,0 +1,166 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img
+    src="https://cdn.pixabay.com/photo/2017/02/16/10/29/icon-2071010_960_720.png"
+    width="10%"
+    alt=""
+  />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/user/perfil']">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/clientes']">Clientes</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/productos']">Productos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']">Nueva Factura</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
+        class="btn btn-outline-danger my-2 my-sm-0"
+        [routerLink]="['/inicio']"
+      >
+        Cerrar Sesion
+      </button>
+    </form>
+  </div>
+</nav>
+  <p>perfil works!</p>
+
+  <div class="container">
+    <form class="example-form">
+
+    <label>Cedula</label>
+    <input  [(ngModel)]="cedula" name="cedula">
+    <label>Nombre</label>
+    <input  [(ngModel)]="nombre" name="nombre">
+    <label>Apellido</label>
+    <input  [(ngModel)]="apellido" name="apellido">
+    <label>Correo</label>
+    <input  [(ngModel)]="correo" name="correo">
+    <label>Direccion</label>
+    <input  [(ngModel)]="direccion" name="direccion">
+    <label>Telefono</label>
+    <input  [(ngModel)]="telefono" name="telefono">
+    
+    
+    <button type="submit" (click)="registrase()">Registrase</button>
+    </form>
+
+    
+      </div>
+  
+  <!-- {{ clientes | json }}
+  edit on :{{editOn}}
+  selected :{{selectedCliente | json}} -->
+  <table>
+    <thead>
+      <tr>
+        <th>cedula</th>
+        <th>nombre</th>
+        <th>apellido</th>
+        <th>correo</th>
+        <th>direccion</th>
+        <th>telefono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let cliente of clientes"
+        (click)="onSelectectCity(cliente)"
+        (dblclick)="toggleEditOn()"
+      >
+        <th>{{ cliente.cedula }}</th>
+        <th>{{ cliente.nombre }}</th>
+        <th>{{ cliente.apellido }}</th>
+        <th>{{ cliente.correo }}</th>
+        <th>{{ cliente.direccion }}</th>
+        <th>{{ cliente.telefono }}</th>
+        <span class="badge badge-danger" (click)="eliminar(cliente)">x</span>
+      </tr>
+      <div class="input-group mt-2" *ngIf="editOn">
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.cedula }}"
+          [(ngModel)]="selectedCliente.cedula"
+          onFocus="this.select()"
+          autofocus
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.nombre }}"
+          [(ngModel)]="selectedCliente.nombre"
+          onFocus="this.select()"
+          autofocus
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.apellido }}"
+          [(ngModel)]="selectedCliente.apellido"
+          onFocus="this.select()"
+          autofocus
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.correo }}"
+          [(ngModel)]="selectedCliente.correo"
+          onFocus="this.select()"
+          autofocus
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.direccion }}"
+          [(ngModel)]="selectedCliente.direccion"
+          onFocus="this.select()"
+          autofocus
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.telefono }}"
+          [(ngModel)]="selectedCliente.telefono"
+          onFocus="this.select()"
+          autofocus
+        />
+        <button class="btn btn-info" (click)="actualizar(selectedCliente)">
+          editar
+        </button>
+      </div>
+    </tbody>
+  </table>
+  
+  <button [routerLink]="['/usuario/factura']">Factura</button>
+  <button [routerLink]="['/usuario/factura']">Clientes</button>
+  <button [routerLink]="['/usuario/factura']">Productos</button>

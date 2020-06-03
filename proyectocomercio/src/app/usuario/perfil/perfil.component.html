@@ -18,34 +18,20 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    
       <li class="nav-item">
-        <a class="nav-link" href="#">Inicio</a>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Quiénes Somos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Misión</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Visión</a>
-        </div>
+        <a class="nav-link" [routerLink]="['/usuario/clientes']">Clientes</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Nuestros Servicios</a>
+        <a class="nav-link" [routerLink]="['/usuario/productos']">Productos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contactos</a>
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']">Nueva Factura</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -58,53 +44,34 @@
     </form>
   </div>
 </nav>
-<p>perfil works!</p>
 
-<!-- {{ clientes | json }}
-edit on :{{editOn}}
-selected :{{selectedCliente | json}} -->
+
+
+
 <table>
   <thead>
     <tr>
-      <th>cedula</th>
       <th>nombre</th>
-      <th>apellido</th>
-      <th>correo</th>
-      <th>direccion</th>
-      <th>telefono</th>
+      <th>precio</th>
+      <th>detalle</th>
+      <th> Pathimagen</th>
+    
     </tr>
   </thead>
   <tbody>
     <tr
-      *ngFor="let cliente of clientes"
-      (click)="onSelectectCity(cliente)"
-      (dblclick)="toggleEditOn()"
-    >
-      <th>{{ cliente.cedula }}</th>
-      <th>{{ cliente.nombre }}</th>
-      <th>{{ cliente.apellido }}</th>
-      <th>{{ cliente.correo }}</th>
-      <th>{{ cliente.direccion }}</th>
-      <th>{{ cliente.telefono }}</th>
-      <span class="badge badge-danger" (click)="eliminar(cliente)">x</span>
+      *ngFor="let producto of productos"
 
+    >
   
-    </tr>
-    <div class="input-group mt-2" *ngIf="editOn">
-      <input
-        type="text"
-        class="form-control"
-        name="editOn"
-        value="{{ selectedCliente.nombre }}"
-        [(ngModel)]="selectedCliente.nombre"
-        onFocus="this.select()"
-        autofocus
-      />
-      <button class="btn btn-info" (click)="actualizar(selectedCliente)">
-        editar
-      </button>
-    </div>
+      <th>{{ producto.nombre }}</th>
+      <th>{{ producto.precio }}</th>
+      <th>{{ producto.detalle }}</th>
+      <th><img src="{{producto.imagen}}" alt="" width="150px"> </th>
+    <th><button (click)="comprar(producto)">Comprar</button></th>
+  
+     
   </tbody>
 </table>
 
-<button [routerLink]="['/usuario/factura']">Factura</button>
+

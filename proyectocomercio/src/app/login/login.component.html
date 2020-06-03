@@ -60,4 +60,19 @@
     </div>
   </nav>
 <p>login works!</p>
-<button [routerLink]="['/usuario','user','perfil']">Iniciar Sesion</button>
+<!--  -->
+
+
+<div class="container">
+  <form class="example-form">
+
+  <label>Usuario</label>
+  <input  [(ngModel)]="usuariomodel" name="usuariomodel">
+  <label>Contraseña</label>
+  <input  [(ngModel)]="contraseniamodel" name="contraseniamodel">
+
+  <button type="submit" (click)="ingresar()" >Iniciar Sesion</button>
+  </form>
+  <!-- [routerLink]="['/usuario','user','perfil']" -->
+  
+    </div>

@@ -1,3 +1,6 @@
+import { NuevafacturaComponent } from './nuevafactura/nuevafactura.component';
+import { ProductosComponent } from './productos/productos.component';
+import { ClientesComponent } from './clientes/clientes.component';
 import { FacturaComponent } from './factura/factura.component';
 import { PerfilComponent } from './perfil/perfil.component';
 
@@ -12,6 +15,18 @@ const rutas: Routes = [
   {
     path: 'factura',
     component: FacturaComponent,
+  },
+  {
+    path: 'clientes',
+    component: ClientesComponent,
+  },
+  {
+    path: 'productos',
+    component: ProductosComponent,
+  },
+  {
+    path: 'nuevafactura',
+    component: NuevafacturaComponent,
   },
 ];
 

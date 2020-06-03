@@ -1,7 +1,8 @@
-import { RegistroService } from './../../services/registro.service';
+import { ProductosService } from './../../services/productos.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Clientes } from '../../modelos/clientes.interface';
+import { Productos } from '../../modelos/productos.interface';
+import { DatosService } from '../../services/datos.service';
 
 @Component({
   selector: 'app-perfil',
@@ -9,50 +10,39 @@ import { Clientes } from '../../modelos/clientes.interface';
   styleUrls: ['./perfil.component.css'],
 })
 export class PerfilComponent implements OnInit {
-  clientes: Clientes[];
-  editOn = false;
-  selectedCliente: Clientes;
+  productos: Productos[];
+  public arregloProducto: Array<any> = [];
+  public arregloPrecio: Array<any> = [];
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
-    private _registroService: RegistroService
+    private _productosService: ProductosService,
+    private _service: DatosService
+    
   ) {}
 
   ngOnInit(): void {
-    this._registroService
-      .metodoGet()
-      .subscribe((data) => (this.clientes = data));
+    this.arregloProducto;
+    this.arregloPrecio;
+    this.sendArray(this.arregloProducto);
+    this.sendArray2(this.arregloPrecio);
+
+    this._productosService
+    .metodoGet()
+    .subscribe((data) => (this.productos = data));
+
   }
-
-  onSelectectCity(cliente:Clientes)
-  {
-    this.selectedCliente = cliente
+  comprar(cliente: Productos) {
+    console.log(cliente.precio);
+    console.log(cliente.nombre);
+    this.arregloProducto.push(cliente.nombre);
+    this.arregloPrecio.push(cliente.precio);
+    console.log(this.arregloProducto);
+    console.log(this.arregloPrecio);
   }
-
-  toggleEditOn(){
-
-      if (this.editOn) {
-        this.editOn = false;
-      } else {
-        this.editOn = true;
-      }
-    }
-    
-  
-
-  actualizar(micliente: Clientes) {
-    this._registroService.metodoPut(micliente).subscribe((cliente) => {
-      this.toggleEditOn();
-
-    });
+  sendArray(arregloProducto) {
+    this._service.setArray(arregloProducto);
   }
-  onSelectCliente(nombre: Clientes) {
-    this.selectedCliente = nombre;
-  }
-
-  eliminar(cliente: Clientes) {
-    // console.log('delete', cliente);
-    this._registroService.metodoDelete(cliente.id).subscribe();
-    this.clientes = this.clientes.filter((c) => c.id != cliente.id);
- 
+  sendArray2(arregloPrecio) {
+    this._service.setArray2(arregloPrecio);
   }
 }

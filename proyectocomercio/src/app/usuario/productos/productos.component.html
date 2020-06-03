@@ -1,0 +1,137 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img
+    src="https://cdn.pixabay.com/photo/2017/02/16/10/29/icon-2071010_960_720.png"
+    width="10%"
+    alt=""
+  />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/user/perfil']">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/clientes']">Clientes</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/productos']">Productos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']">Nueva Factura</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
+        class="btn btn-outline-danger my-2 my-sm-0"
+        [routerLink]="['/inicio']"
+      >
+        Cerrar Sesion
+      </button>
+    </form>
+  </div>
+</nav>
+<p>productos works!</p>
+<div class="container">
+    <form class="example-form">
+
+    <label>Nombre</label>
+    <input  [(ngModel)]="nombre" name="nombre">
+    <label>Precio</label>
+    <input  [(ngModel)]="precio" name="precio">
+    <label>Detalle</label>
+    <input  [(ngModel)]="detalle" name="detalle">
+    <label>Imagen</label>
+    <input  [(ngModel)]="imagen" name="imagen">
+  
+    <button type="submit" (click)="registrase()">Registrase</button>
+    </form>
+
+    
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>nombre</th>
+            <th>precio</th>
+            <th>detalle</th>
+            <th> Pathimagen</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let producto of productos"
+            (click)="onSelectectCity(producto)"
+            (dblclick)="toggleEditOn()"
+          >
+        
+            <th>{{ producto.nombre }}</th>
+            <th>{{ producto.precio }}</th>
+            <th>{{ producto.detalle }}</th>
+            <th><img src="{{producto.imagen}}" alt="" width="150px"> </th>
+  
+        
+            <span class="badge badge-danger" (click)="eliminar(producto)">x</span>
+          </tr>
+          <div class="input-group mt-2" *ngIf="editOn">
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedProducto.nombre }}"
+              [(ngModel)]="selectedProducto.nombre"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedProducto.precio }}"
+              [(ngModel)]="selectedProducto.precio"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedProducto.detalle }}"
+              [(ngModel)]="selectedProducto.detalle"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedProducto.imagen }}"
+              [(ngModel)]="selectedProducto.imagen"
+              onFocus="this.select()"
+              autofocus
+            />
+            
+            <button class="btn btn-info" (click)="actualizar(selectedProducto)">
+              editar
+            </button>
+          </div>
+        </tbody>
+      </table>
+ 
