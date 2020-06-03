@@ -1,7 +1,93 @@
 <button [routerLink]="['/usuario/user/perfil']">Regresar</button>
 <p>nuevafactura works!</p>
+<div>
 
+    <table>
+        <thead>
+          <tr>
+            <th>cedula</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let cliente of clientes"
+            (click)="onSelectectCity(cliente)"
+            (dblclick)="toggleEditOn()"
+          >
+            <th>{{ cliente.cedula }}</th>
+         
+
+          </tr>
+          <div class="input-group mt-2" *ngIf="editOn">
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.cedula }}"
+              [(ngModel)]="selectedCliente.cedula"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.nombre }}"
+              [(ngModel)]="selectedCliente.nombre"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.apellido }}"
+              [(ngModel)]="selectedCliente.apellido"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.correo }}"
+              [(ngModel)]="selectedCliente.correo"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.direccion }}"
+              [(ngModel)]="selectedCliente.direccion"
+              onFocus="this.select()"
+              autofocus
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.telefono }}"
+              [(ngModel)]="selectedCliente.telefono"
+              onFocus="this.select()"
+              autofocus
+            />
+        
+          </div>
+        </tbody>
+      </table>
+
+
+</div>
 
 <div>{{arrayDesdeService}}</div>
 
 <div>{{arrayDesdeService2}}</div>
+
+<div>fecha <input type="text"  [(ngModel)]="fecha"></div>
+<div>subtotal <input type="text" [(ngModel)]="subtotal" value="{{suma}}"></div>
+<div>iva <input type="text" [(ngModel)]="iva" value="{{iva}}"></div>
+<div>total <input type="text" [(ngModel)]="total" value="{{total}}"></div>
+<button (click)="calcular()">Calcular</button>
