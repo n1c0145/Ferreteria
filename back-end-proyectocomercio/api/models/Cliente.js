@@ -27,7 +27,10 @@ direccion:{
 telefono:{
   type: "number",
 },
-
+factura: {
+  collection: "factura",
+  via: "idCliente",
+},
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗

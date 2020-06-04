@@ -11,6 +11,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { ProductosComponent } from './productos/productos.component';
 import { NuevafacturaComponent } from './nuevafactura/nuevafactura.component';
 import { DatosService } from "../services/datos.service";
+import { FacturaService } from "../services/factura.service";
 @NgModule({
   declarations: [
     PerfilComponent,
@@ -20,6 +21,6 @@ import { DatosService } from "../services/datos.service";
     NuevafacturaComponent,
   ],
   imports: [CommonModule, UsuarioRoutes, HttpClientModule, FormsModule],
-  providers: [RegistroService, ProductosService , DatosService],
+  providers: [RegistroService, ProductosService , DatosService , FacturaService],
 })
 export class UsuarioModule {}

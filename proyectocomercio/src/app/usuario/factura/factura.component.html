@@ -33,7 +33,9 @@
         <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']">Nueva Factura</a>
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']"
+          >Nueva Factura</a
+        >
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -47,3 +49,37 @@
   </div>
 </nav>
 <p>factura works!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>cedula</th>
+      <th>nombre</th>
+      <th>apellido</th>
+      <th>correo</th>
+      <th>direccion</th>
+      <th>telefono</th>
+      <th>fecha</th>
+      <th>subtotal</th>
+      <th>total</th>
+     
+   
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <th>{{ cliente.cedula }}</th>
+      <th>{{ cliente.nombre }}</th>
+      <th>{{ cliente.apellido }}</th>
+      <th>{{ cliente.correo }}</th>
+      <th>{{ cliente.direccion }}</th>
+      <th>{{ cliente.telefono }}</th>
+      <th>{{ cliente.fecha }}</th>
+      <th>{{ cliente.subtotal }}</th>
+      <th>{{ cliente.total }}</th>
+    
+
+
+    </tr>
+  </tbody>
+</table>

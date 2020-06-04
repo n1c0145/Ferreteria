@@ -1,6 +1,6 @@
 export interface Usuario {
-  id: 'string';
-  usuario: 'string';
+  id: string;
+  usuario: string;
 
-  contrasenia: 'string';
+  contrasenia: string;
 }

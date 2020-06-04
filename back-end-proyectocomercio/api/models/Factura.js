@@ -8,7 +8,39 @@
 module.exports = {
 
   attributes: {
-
+    cedula:{
+      type: "number",
+    },
+    nombre:{
+      type: "string",
+    },
+    apellido:{
+      type: "string",
+    },
+    correo:{
+      type: "string",
+    },
+    direccion:{
+      type: "string",
+    },
+    telefono:{
+      type: "number",
+    },
+    fecha:{
+      type: "string",
+    },
+    subtotal:{
+      type: "number", 
+    },
+    total:{
+      type: "number",
+      
+    },
+ 
+    idCliente:{
+      model: 'cliente'
+    
+    }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

@@ -1,8 +1,8 @@
 import { UsuarioModule } from '../app/usuario/usuario.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from "../app/app-routing.module";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InicioComponent } from './inicio/inicio.component';
@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegistroService } from './services/registro.service';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,9 @@ import { RegistroService } from './services/registro.service';
     LoginComponent,
     RegistrarseComponent,
     NoEncontradoComponent,
+   
+ 
+ 
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,8 @@ import { RegistroService } from './services/registro.service';
     UsuarioModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
+    
   ],
   providers: [RegistroService],
   bootstrap: [AppComponent],

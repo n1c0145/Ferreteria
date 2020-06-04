@@ -2,6 +2,7 @@ import { RegistroService } from './../../services/registro.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Clientes } from '../../modelos/clientes.interface';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-clientes',
