@@ -1,0 +1,19 @@
+.padre{
+
+    background-color: rgb(200, 200, 200);
+width: 60%;
+margin-left: 20%;
+border-top-style: solid;
+border-right-style: solid;
+border-bottom-style: solid;
+border-left-style: solid;
+}
+
+.divider{
+    color: black;
+    border: double;
+}
+
+.btn{
+    margin-left: 2%;
+}

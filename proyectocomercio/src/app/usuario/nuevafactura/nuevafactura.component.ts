@@ -12,8 +12,8 @@ import * as html2pdf from 'html2pdf.js'
   styleUrls: ['./nuevafactura.component.css'],
 })
 export class NuevafacturaComponent implements OnInit {
-  public arrayDesdeService: Array<any>;
-  public arrayDesdeService2: Array<any>;
+  public arrayDesdeService:any;
+  public arrayDesdeService2:any;
   clientes: Clientes[];
   factura: Factura[];
   editOn = false;
@@ -25,12 +25,13 @@ export class NuevafacturaComponent implements OnInit {
   direccion = '';
   telefono = '';
   id = '';
-  fecha = '';
+  fecha = new Date();
   subtotal = '';
   totalng = '';
   total=0;
   iva=0 ;
   suma=0;
+ 
    sumacondecimal:any;
    totalcondecimal:any;
 
@@ -48,6 +49,7 @@ export class NuevafacturaComponent implements OnInit {
     this._registroService
       .metodoGet()
       .subscribe((data) => (this.clientes = data));
+
   }
   onSelectectCity(cliente: Clientes) {
     this.selectedCliente = cliente;
@@ -89,16 +91,16 @@ export class NuevafacturaComponent implements OnInit {
         total: this.totalng,
       })
       .subscribe((resultadoPost) => {
-        alert('usuario registrado');
+        alert('factura guardada');
       });
   }
 
 exportar(){
   const options = {
     filename: 'factura.pdf',
-    imge: {type: 'jpeg'},
+    image: {type: 'jpeg'},
     html2canvas: {},
-    jsPDF: {orientation: 'landscape'}
+    jsPDF: {  orientation: 'landscape'}
   };
   const content: Element = document.getElementById('elemetoexportar');
   html2pdf().from(content).set(options).save();

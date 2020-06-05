@@ -1,0 +1,17 @@
+.padre{
+    margin-top: 3%;
+    background-color: #BFD1EF;
+width: 50%;
+margin-left: 25%;
+}
+
+.hijo{
+    margin-top: 3%;
+    background-color: rgb(192, 214, 197);
+    margin-left: 25%;
+    width: 50%;
+}
+
+.contenedor{
+    text-align:center;
+}

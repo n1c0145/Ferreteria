@@ -10,8 +10,14 @@ import { ProductosService } from '../services/productos.service';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProductosComponent } from './productos/productos.component';
 import { NuevafacturaComponent } from './nuevafactura/nuevafactura.component';
-import { DatosService } from "../services/datos.service";
-import { FacturaService } from "../services/factura.service";
+import { DatosService } from '../services/datos.service';
+import { FacturaService } from '../services/factura.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     PerfilComponent,
@@ -20,7 +26,18 @@ import { FacturaService } from "../services/factura.service";
     ProductosComponent,
     NuevafacturaComponent,
   ],
-  imports: [CommonModule, UsuarioRoutes, HttpClientModule, FormsModule],
-  providers: [RegistroService, ProductosService , DatosService , FacturaService],
+  imports: [
+    CommonModule,
+    UsuarioRoutes,
+    HttpClientModule,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatDividerModule,
+    MatInputModule,
+    MatFormFieldModule
+  ],
+  providers: [RegistroService, ProductosService, DatosService, FacturaService],
 })
 export class UsuarioModule {}

@@ -14,7 +14,8 @@ export class RegistrarseComponent implements OnInit {
   id = '';
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
-    private _registroService: RegistroService
+    private _registroService: RegistroService,
+    
   ) {}
 
   ngOnInit(): void {}
@@ -29,4 +30,6 @@ export class RegistrarseComponent implements OnInit {
         alert('usuario registrado');
       });
   }
+
+  
 }

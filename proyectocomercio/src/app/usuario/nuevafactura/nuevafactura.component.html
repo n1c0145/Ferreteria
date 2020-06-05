@@ -1,177 +1,195 @@
- <button [routerLink]="['/usuario/user/perfil']">Regresar</button>
-<p>nuevafactura works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img
+    src="https://cdn.pixabay.com/photo/2017/02/16/10/29/icon-2071010_960_720.png"
+    width="10%"
+    alt=""
+  />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div id="elemetoexportar">
-  
-     
-       
-         <!--  
-              <p>cedula</p>
-  
-            
-          
-          
-            <div
-              *ngFor="let cliente of clientes"
-              (click)="onSelectectCity(cliente)"
-              (dblclick)="toggleEditOn()"
-            >
-              <p>{{ cliente.cedula }}</p>
-           
-  
-            </div>
-            
-            <div class="input-group mt-2" *ngIf="editOn">
-              <input
-                type="text"
-                class="form-control"
-                name="editOn"
-                value="{{ selectedCliente.cedula }}"
-                [(ngModel)]="selectedCliente.cedula"
-                onFocus="this.select()"
-                autofocus
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="editOn"
-                value="{{ selectedCliente.nombre }}"
-                [(ngModel)]="selectedCliente.nombre"
-             
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="editOn"
-                value="{{ selectedCliente.apellido }}"
-                [(ngModel)]="selectedCliente.apellido"
-     
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="editOn"
-                value="{{ selectedCliente.correo }}"
-                [(ngModel)]="selectedCliente.correo"
-            
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="editOn"
-                value="{{ selectedCliente.direccion }}"
-                [(ngModel)]="selectedCliente.direccion"
-            
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="editOn"
-                value="{{ selectedCliente.telefono }}"
-                [(ngModel)]="selectedCliente.telefono"
-               
-              />
-          
-            </div>
-        
-          
- 
-  
-  fecha <input type="text"  [(ngModel)]="fecha">
-  subtotal <input type="text" [(ngModel)]="subtotal" value="{{suma}}">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/user/perfil']">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/clientes']">Clientes</a>
+      </li>
 
-  total <input type="text" [(ngModel)]="total" value="{{total}}">
-  -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/productos']">Productos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']"
+          >Nueva Factura</a
+        >
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
+        class="btn btn-outline-danger my-2 my-sm-0"
+        [routerLink]="['/inicio']"
+      >
+        Cerrar Sesion
+      </button>
+    </form>
+  </div>
+</nav>
 
 
-  <p>cedula</p>
   
-            
-          
-          
+
+<div>
+  <h5>Cedula Clientes Registrados</h5>
+
   <div
     *ngFor="let cliente of clientes"
     (click)="onSelectectCity(cliente)"
     (dblclick)="toggleEditOn()"
   >
-    <p>{{ cliente.cedula }}</p>
- 
-
+    <h5>{{ cliente.cedula }}</h5>
   </div>
-
-
-
-
-
+</div>
+<div id="elemetoexportar">
+<div class="padre" >
   <div class="input-group mt-2" *ngIf="editOn">
-    <input
-      type="text"
-      class="form-control"
-      name="editOn"
-      value="{{ selectedCliente.cedula }}"
-      [(ngModel)]="selectedCliente.cedula"
+    <div>
+      <div ><h4>Factura</h4></div>
+      <mat-divider class="divider"></mat-divider>
 
+      <div >
+        <h4>Cedula</h4>
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.cedula }}"
+          [(ngModel)]="selectedCliente.cedula"
+        />
+      </div>
+      <div>
+        <h5>Nombre</h5>
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.nombre }}"
+          [(ngModel)]="selectedCliente.nombre"
+        />
+      </div>
+      <div>
+        <h5>Apellido</h5>
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.apellido }}"
+          [(ngModel)]="selectedCliente.apellido"
+        />
+      </div>
+      <div>
+        <h5>Correo</h5>
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.correo }}"
+          [(ngModel)]="selectedCliente.correo"
+        />
+      </div>
+      <div>
+        <h5>Direccion</h5>
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.direccion }}"
+          [(ngModel)]="selectedCliente.direccion"
+        />
+      </div>
+      <div>
+        <h5>Telefono</h5>
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedCliente.telefono }}"
+          [(ngModel)]="selectedCliente.telefono"
+        />
+      </div>
+      <div>
+        <h5>Fecha y Hora</h5>
+        <input
+          type="text"
+          [(ngModel)]="fecha"
+          name="fecha"
+          value="{{ fecha | date: 'dd-MM-yyyy' }}"
+        />
+      </div>
+    </div>
+  </div>
+  <mat-divider class="divider"></mat-divider>
 
-    />
-    <input
-      type="text"
-      class="form-control"
-      name="editOn"
-      value="{{ selectedCliente.nombre }}"
-      [(ngModel)]="selectedCliente.nombre"
-   
-    />
-    <input
-      type="text"
-      class="form-control"
-      name="editOn"
-      value="{{ selectedCliente.apellido }}"
-      [(ngModel)]="selectedCliente.apellido"
-
-    />
-    <input
-      type="text"
-      class="form-control"
-      name="editOn"
-      value="{{ selectedCliente.correo }}"
-      [(ngModel)]="selectedCliente.correo"
-  
-    />
-    <input
-      type="text"
-      class="form-control"
-      name="editOn"
-      value="{{ selectedCliente.direccion }}"
-      [(ngModel)]="selectedCliente.direccion"
-  
-    />
-    <input
-      type="text"
-      class="form-control"
-      name="editOn"
-      value="{{ selectedCliente.telefono }}"
-      [(ngModel)]="selectedCliente.telefono"
-     
-    />
-
+  <div class="row">
+    
+    <div class="col-sm">
+      <div><h5>Productos</h5></div>
+      <div *ngFor="let item of arrayDesdeService">
+        <div>
+          <h6>{{ item }}</h6>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm">
+      <div><h5>Precio</h5></div>
+      <div *ngFor="let item2 of arrayDesdeService2">
+        <div>
+          <h6>{{ item2 }}</h6>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <mat-divider class="divider"></mat-divider>
 
 
-
-
-  <div>{{arrayDesdeService}}</div>
   
-  <div>{{arrayDesdeService2}}</div>
+  <div>Subtotal<input
+    type="text"
+    [(ngModel)]="subtotal"
+    value="{{ sumacondecimal }}"
+  /></div>
+  
+  <div>Iva<input type="text" [(ngModel)]="iva" value="{{ iva }}" /> </div>
+  
+  <div>Total<input
+    type="text"
+    [(ngModel)]="totalng"
+    value="{{ totalcondecimal }}"
+  /></div>
+  <mat-divider class="divider"></mat-divider>
 
-  fecha<input type="text"[(ngModel)]="fecha" name="fecha">
-  subtotal<input type="text"[(ngModel)]="subtotal" value="{{sumacondecimal}}">
-  iva<input type="text"[(ngModel)]="iva" value="{{iva}}">
-  total<input type="text"[(ngModel)]="totalng" value="{{totalcondecimal}}">
-  <button (click)="calcular()">Calcular</button>
-  <button type="submit" (click)="guardar()">Guardar</button>
-
-
-<button (click)="exportar()">Hacer pdf...</button>
+  <div>
+    <button (click)="calcular()" class="btn btn-info">Calcular</button>
+    <button type="submit" (click)="guardar()" class="btn btn-success">Guardar</button>
+    
+    <button (click)="exportar()" class="btn btn-light">Guardar como pdf</button></div>
+</div>
 
 </div>
+
+

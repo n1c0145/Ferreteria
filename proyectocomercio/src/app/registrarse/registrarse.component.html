@@ -1,77 +1,127 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img
-      src="https://cdn.pixabay.com/photo/2017/02/16/10/29/icon-2071010_960_720.png"
-      width="10%"
-      alt=""
-    />
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="#">Inicio</a>
-            </li>
-  
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Quiénes Somos
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Misión</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Visión</a>
-          </div>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">Nuestros Servicios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contactos</a>
-        </li>
-    
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-primary my-2 my-sm-0" [routerLink]="['/registrarse']">
-          Registrarse
-        </button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" [routerLink]="['/login']">
-          Iniciar Sesion
-        </button>
-      </form>
-    </div>
-  </nav>
-  <div class="container">
-    <form class="example-form">
+  <img
+    src="https://cdn.pixabay.com/photo/2017/02/16/10/29/icon-2071010_960_720.png"
+    width="10%"
+    alt=""
+  />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <label>Usuario</label>
-    <input  [(ngModel)]="usuario" name="usuario">
-    <label>Contraseña</label>
-    <input  [(ngModel)]="contrasenia" name="contrasenia">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Inicio</a>
+      </li>
 
-    
-    
-    <button type="submit" (click)="registrase()" [routerLink]="['/login']">Registrase</button>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Quiénes Somos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Misión</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Visión</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Nuestros Servicios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contactos</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
+        class="btn btn-outline-primary my-2 my-sm-0"
+        [routerLink]="['/registrarse']"
+      >
+        Registrarse
+      </button>
+      <button
+        class="btn btn-outline-primary my-2 my-sm-0"
+        [routerLink]="['/login']"
+      >
+        Iniciar Sesion
+      </button>
     </form>
+  </div>
+</nav>
 
-    
+    <div fxLayout="column" fxLayoutAlign="center center" class="padre">
+      <div>
+        <img
+          src="https://cdn.icon-icons.com/icons2/827/PNG/512/user_icon-icons.com_66546.png"
+          width="25%"
+          alt=""
+          class="box2"
+        />
       </div>
+
+<div class="box2"><h3>Usuario</h3></div>
+    <div class="box2"><input [(ngModel)]="usuario" name="usuario"   required   minlength="5" #campoNombre="ngModel"/>
+      <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="campoNombre.errors && campoNombre.dirty === true"
+    >
+      <p *ngIf="campoNombre.errors.required">
+        Campo nombre requerido
+      </p>
+      <p *ngIf="campoNombre.errors.minlength">
+        Minimo 5 caracteres
+      </p>
+    </div>
+    </div>
+    <div class="box2"><h3>Contraseña</h3></div>
+    <div class="box2">
+      <input [(ngModel)]="contrasenia" name="contrasenia" type="password" required #contra="ngModel"/>
+      <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="contra.errors && contra.dirty === true"
+    >
+      <p *ngIf="contra.errors.required">
+        Campo nombre requerido
+      </p>
+      <p *ngIf="campoNombre.errors.minlength">
+        Minimo 5 caracteres
+      </p>
+    </div>
+    </div>
+
+    <div class="box2">
+      <button
+  
+        class="button"
+        mat-raised-button color="primary"
+        type="submit"
+        (click)="registrase()"
+        [routerLink]="['/login']"
+      
+      >
+        Registrarse
+      </button>
+    </div>
+</div> 
+
+
+
 

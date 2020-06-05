@@ -33,7 +33,9 @@
         <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']">Nueva Factura</a>
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']"
+          >Nueva Factura</a
+        >
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -46,92 +48,106 @@
     </form>
   </div>
 </nav>
-<p>productos works!</p>
-<div class="container">
+<div class="contenedor">
+<div>
+  <div class="padre">
     <form class="example-form">
+      <div fxLayout="row">
+        <div>
+          <label><h4>Nombre</h4></label>
+          <input [(ngModel)]="nombre" name="nombre" />
+          <label><h4>Precio</h4></label>
+          <input [(ngModel)]="precio" name="precio" type="number" />
+        </div>
 
-    <label>Nombre</label>
-    <input  [(ngModel)]="nombre" name="nombre">
-    <label>Precio</label>
-    <input  [(ngModel)]="precio" name="precio">
-    <label>Detalle</label>
-    <input  [(ngModel)]="detalle" name="detalle">
-    <label>Imagen</label>
-    <input  [(ngModel)]="imagen" name="imagen">
-  
-    <button type="submit" (click)="registrase()">Registrase</button>
+        <div>
+          <label><h4>Detalle</h4></label>
+          <input [(ngModel)]="detalle" name="detalle" />
+          <label><h4>Imagen</h4></label>
+          <input [(ngModel)]="imagen" name="imagen" />
+        </div>
+        <div>
+          <button type="submit" (click)="registrase()" class="btn btn-success">Añadir Producto<mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            >assignment_turned_in</mat-icon></button>
+        </div>
+
+        
+      </div>
     </form>
+  </div>
+</div>
+<div class="hijo">
+<table>
+  <thead>
+    <tr>
+      <th><h5>Nombre</h5></th>
+      <th><h5>Precio</h5></th>
+      <th><h5>Detalle</h5></th>
+      <th><h5>Path imagen</h5></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let producto of productos"
+      (click)="onSelectectCity(producto)"
+      (dblclick)="toggleEditOn()"
+    >
+      <th>{{ producto.nombre }}</th>
+      <th>{{ producto.precio }}</th>
+      <th>{{ producto.detalle }}</th>
+      <th><img src="{{ producto.imagen }}" alt="" width="150px" /></th>
+
+      <span class="badge badge-danger" (click)="eliminar(producto)">x</span>
+    </tr>
+    <div class="input-group mt-2" *ngIf="editOn">
+      <div>      <input
+        type="text"
+        class="form-control"
+        name="editOn"
+        value="{{ selectedProducto.nombre }}"
+        [(ngModel)]="selectedProducto.nombre"
+        onFocus="this.select()"
+        autofocus
+      /></div>
+      <div><input
+        type="text"
+        class="form-control"
+        name="editOn"
+        value="{{ selectedProducto.precio }}"
+        [(ngModel)]="selectedProducto.precio"
+        onFocus="this.select()"
+        autofocus
+      /></div>
+      <div>    <input
+        type="text"
+        class="form-control"
+        name="editOn"
+        value="{{ selectedProducto.detalle }}"
+        [(ngModel)]="selectedProducto.detalle"
+        onFocus="this.select()"
+        autofocus
+      /></div>
+      <div>
+        <input
+          type="text"
+          class="form-control"
+          name="editOn"
+          value="{{ selectedProducto.imagen }}"
+          [(ngModel)]="selectedProducto.imagen"
+          onFocus="this.select()"
+          autofocus
+        /></div>
+
+      <div>  <button class="btn btn-info" (click)="actualizar(selectedProducto)">
+        Editar
+      </button></div>
+  
 
     
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>nombre</th>
-            <th>precio</th>
-            <th>detalle</th>
-            <th> Pathimagen</th>
-          
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="let producto of productos"
-            (click)="onSelectectCity(producto)"
-            (dblclick)="toggleEditOn()"
-          >
-        
-            <th>{{ producto.nombre }}</th>
-            <th>{{ producto.precio }}</th>
-            <th>{{ producto.detalle }}</th>
-            <th><img src="{{producto.imagen}}" alt="" width="150px"> </th>
-  
-        
-            <span class="badge badge-danger" (click)="eliminar(producto)">x</span>
-          </tr>
-          <div class="input-group mt-2" *ngIf="editOn">
-            <input
-              type="text"
-              class="form-control"
-              name="editOn"
-              value="{{ selectedProducto.nombre }}"
-              [(ngModel)]="selectedProducto.nombre"
-              onFocus="this.select()"
-              autofocus
-            />
-            <input
-              type="text"
-              class="form-control"
-              name="editOn"
-              value="{{ selectedProducto.precio }}"
-              [(ngModel)]="selectedProducto.precio"
-              onFocus="this.select()"
-              autofocus
-            />
-            <input
-              type="text"
-              class="form-control"
-              name="editOn"
-              value="{{ selectedProducto.detalle }}"
-              [(ngModel)]="selectedProducto.detalle"
-              onFocus="this.select()"
-              autofocus
-            />
-            <input
-              type="text"
-              class="form-control"
-              name="editOn"
-              value="{{ selectedProducto.imagen }}"
-              [(ngModel)]="selectedProducto.imagen"
-              onFocus="this.select()"
-              autofocus
-            />
-            
-            <button class="btn btn-info" (click)="actualizar(selectedProducto)">
-              editar
-            </button>
-          </div>
-        </tbody>
-      </table>
- 
+    </div>
+  </tbody>
+</table>
+</div>
+</div>

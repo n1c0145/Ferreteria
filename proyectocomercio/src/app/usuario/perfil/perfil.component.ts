@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Productos } from '../../modelos/productos.interface';
 import { DatosService } from '../../services/datos.service';
-
+import {MatIconModule} from '@angular/material/icon';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -38,6 +38,7 @@ export class PerfilComponent implements OnInit {
     this.arregloPrecio.push(cliente.precio);
     console.log(this.arregloProducto);
     console.log(this.arregloPrecio);
+    alert('Producto Comprado')
   }
   sendArray(arregloProducto) {
     this._service.setArray(arregloProducto);

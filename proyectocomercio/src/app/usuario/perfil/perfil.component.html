@@ -18,7 +18,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-    
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/usuario/clientes']">Clientes</a>
       </li>
@@ -31,7 +30,9 @@
         <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']">Nueva Factura</a>
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']"
+          >Nueva Factura</a
+        >
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -45,33 +46,26 @@
   </div>
 </nav>
 
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>nombre</th>
-      <th>precio</th>
-      <th>detalle</th>
-      <th> Pathimagen</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let producto of productos"
-
-    >
-  
-      <th>{{ producto.nombre }}</th>
-      <th>{{ producto.precio }}</th>
-      <th>{{ producto.detalle }}</th>
-      <th><img src="{{producto.imagen}}" alt="" width="150px"> </th>
-    <th><button (click)="comprar(producto)">Comprar</button></th>
-  
-     
-  </tbody>
-</table>
-
-
+<div class="padre">
+  <table>
+    <thead>
+      <tr>
+        <th><h4>Nombre</h4></th>
+        <th><h4>Precio</h4></th>
+        <th><h4>Detalle</h4></th>
+        <th><h4>Path Imagen</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let producto of productos" class="box">
+        <th>{{ producto.nombre }}</th>
+        <th>{{ producto.precio }}</th>
+        <th>{{ producto.detalle }}</th>
+        <th><img src="{{ producto.imagen }}" alt="" width="150px" /></th>
+        <th><button (click)="comprar(producto)" type="button" class="btn btn-success">Comprar        <mat-icon aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon>
+        </button></th>
+      </tr>
+    </tbody>
+  </table>
+</div>

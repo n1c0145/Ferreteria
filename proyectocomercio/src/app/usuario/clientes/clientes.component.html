@@ -33,7 +33,9 @@
         <a class="nav-link" [routerLink]="['/usuario/factura']">Factura</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']">Nueva Factura</a>
+        <a class="nav-link" [routerLink]="['/usuario/nuevafactura']"
+          >Nueva Factura</a
+        >
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -46,118 +48,186 @@
     </form>
   </div>
 </nav>
-  <p>perfil works!</p>
 
-  <div class="container">
-   
-
-    <label>Cedula</label>
-    <input  [(ngModel)]="cedula" name="cedula">
-    <label>Nombre</label>
-    <input  [(ngModel)]="nombre" name="nombre">
-    <label>Apellido</label>
-    <input  [(ngModel)]="apellido" name="apellido">
-    <label>Correo</label>
-    <input  [(ngModel)]="correo" name="correo">
-    <label>Direccion</label>
-    <input  [(ngModel)]="direccion" name="direccion">
-    <label>Telefono</label>
-    <input  [(ngModel)]="telefono" name="telefono">
-    
-    
-    <button  (click)="registrase()">Registrase</button>
-    
-
-    
+<div class="contenedor">
+  <div class="padre">
+    <form action="">
+      <div fxLayout="row">
+        <div>
+          <label><h4>Cédula:</h4></label>
+          <input [(ngModel)]="cedula" name="cedula" required  #ced="ngModel"  minlength="10"/>
+          <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="ced.errors && ced.dirty === true"
+        >
+          <p *ngIf="ced.errors.required">
+            Campo cedula requerido
+          </p>
+          <p *ngIf="ced.errors.minlength">
+            Minimo 10 caracteres
+          </p>
+        </div>
+          <label><h4>Nombre:</h4></label>
+          <input [(ngModel)]="nombre" name="nombre" required />
+        </div>
       </div>
-  
+
+      <div>
+        <label><h4>Apellido:</h4></label>
+        <input [(ngModel)]="apellido" name="apellido" required />
+        <label><h4>Correo:</h4></label>
+        <input [(ngModel)]="correo" name="correo" required  pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
+        #campoEmail="ngModel"/>
+        <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="campoEmail.errors && campoEmail.dirty === true"
+      >
+        <p *ngIf="campoEmail.errors.required">
+          Campo email requerido
+        </p>
+        <p *ngIf="campoEmail.errors.minlength">
+          Minimo 5 caracteres
+        </p>
+        <p *ngIf="campoEmail.errors.pattern">
+          No es email
+        </p>
+      </div>
+      </div>
+      <div>
+        <label><h4>Direccion:</h4></label>
+        <input [(ngModel)]="direccion" name="direccion" required />
+        <label><h4>Telefono:</h4></label>
+        <input [(ngModel)]="telefono" name="telefono" required   #tel="ngModel"  minlength="10"/>
+        <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="tel.errors && tel.dirty === true"
+    >
+      <p *ngIf="tel.errors.required">
+        Campo telefono requerido
+      </p>
+      <p *ngIf="tel.errors.minlength">
+        Minimo 10 caracteres
+      </p>
+    </div>
+      </div>
+
+      <div>
+        <button (click)="registrase()" type="button" class="btn btn-success">
+          Añadir Cliente<mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            >supervised_user_circle</mat-icon
+          >
+        </button>
+      </div>
+    </form>
+  </div>
+
   <!-- {{ clientes | json }}
   edit on :{{editOn}}
   selected :{{selectedCliente | json}} -->
-  <table>
-    <thead>
-      <tr>
-        <th>cedula</th>
-        <th>nombre</th>
-        <th>apellido</th>
-        <th>correo</th>
-        <th>direccion</th>
-        <th>telefono</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let cliente of clientes"
-        (click)="onSelectectCity(cliente)"
-        (dblclick)="toggleEditOn()"
-      >
-        <th>{{ cliente.cedula }}</th>
-        <th>{{ cliente.nombre }}</th>
-        <th>{{ cliente.apellido }}</th>
-        <th>{{ cliente.correo }}</th>
-        <th>{{ cliente.direccion }}</th>
-        <th>{{ cliente.telefono }}</th>
-        <span class="badge badge-danger" (click)="eliminar(cliente)">x</span>
-      </tr>
-      <div class="input-group mt-2" *ngIf="editOn">
-        <input
-          type="text"
-          class="form-control"
-          name="editOn"
-          value="{{ selectedCliente.cedula }}"
-          [(ngModel)]="selectedCliente.cedula"
-          onFocus="this.select()"
-          autofocus
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="editOn"
-          value="{{ selectedCliente.nombre }}"
-          [(ngModel)]="selectedCliente.nombre"
-          onFocus="this.select()"
-          autofocus
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="editOn"
-          value="{{ selectedCliente.apellido }}"
-          [(ngModel)]="selectedCliente.apellido"
-          onFocus="this.select()"
-          autofocus
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="editOn"
-          value="{{ selectedCliente.correo }}"
-          [(ngModel)]="selectedCliente.correo"
-          onFocus="this.select()"
-          autofocus
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="editOn"
-          value="{{ selectedCliente.direccion }}"
-          [(ngModel)]="selectedCliente.direccion"
-          onFocus="this.select()"
-          autofocus
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="editOn"
-          value="{{ selectedCliente.telefono }}"
-          [(ngModel)]="selectedCliente.telefono"
-          onFocus="this.select()"
-          autofocus
-        />
-        <button class="btn btn-info" (click)="actualizar(selectedCliente)">
-          editar
-        </button>
-      </div>
-    </tbody>
-  </table>
-  
+  <div class="hijo">
+    <table>
+      <thead>
+        <tr>
+          <th><h5>Cédula</h5></th>
+          <th><h5>Nombre</h5></th>
+          <th><h5>Apellido</h5></th>
+          <th><h5>Correo</h5></th>
+          <th><h5>Direccion</h5></th>
+          <th><h5>Teléfono</h5></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let cliente of clientes"
+          (click)="onSelectectCity(cliente)"
+          (dblclick)="toggleEditOn()"
+        >
+          <th>{{ cliente.cedula }}</th>
+          <th>{{ cliente.nombre }}</th>
+          <th>{{ cliente.apellido }}</th>
+          <th>{{ cliente.correo }}</th>
+          <th>{{ cliente.direccion }}</th>
+          <th>{{ cliente.telefono }}</th>
+          <span class="badge badge-danger" (click)="eliminar(cliente)">x</span>
+        </tr>
+        <div class="input-group mt-2" *ngIf="editOn">
+         <div>
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.cedula }}"
+              [(ngModel)]="selectedCliente.cedula"
+              onFocus="this.select()"
+              autofocus
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.nombre }}"
+              [(ngModel)]="selectedCliente.nombre"
+              onFocus="this.select()"
+              autofocus
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.apellido }}"
+              [(ngModel)]="selectedCliente.apellido"
+              onFocus="this.select()"
+              autofocus
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.correo }}"
+              [(ngModel)]="selectedCliente.correo"
+              onFocus="this.select()"
+              autofocus
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.direccion }}"
+              [(ngModel)]="selectedCliente.direccion"
+              onFocus="this.select()"
+              autofocus
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="editOn"
+              value="{{ selectedCliente.telefono }}"
+              [(ngModel)]="selectedCliente.telefono"
+              onFocus="this.select()"
+              autofocus
+            />
+          </div>
+
+          <button class="btn btn-info" (click)="actualizar(selectedCliente)">
+            Editar
+          </button>
+        </div>
+      </tbody>
+    </table>
+  </div>
+</div>
